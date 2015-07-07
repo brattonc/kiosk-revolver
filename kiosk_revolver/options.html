@@ -1,0 +1,39 @@
+<html>
+<head><title>Options :: Interactive Kiosk Revolver</title></head>
+<style type="text/css">
+body {font-family: arial, sans-serif;margin:2em;background-color:#f1f1f1;}
+div#topline {background-image:url('revolver_t_48.png');background-repeat: no-repeat;padding:0 5px 5px 55px;}
+h1 {margin:0;padding:0;letter-spacing:-2px;}
+span.byline {font-size:.7em;color:#999;}
+span.byline a {color:#777;}
+input {font-size:.8em;border:1px solid #ccc;padding:3px;}
+label {font-size:.8em;}
+span.example {font-size:.7em;color:#999;display:block;}
+div#settings {margin:0 2em;background-color: #ffffff;border: 1px solid #ccc;border-radius: 10px 10px;padding: 10px 30px 30px 30px;}
+div#settings p {border-bottom: 1px dotted #ccc;padding-bottom:3px;}
+span#status, span#status2 {color:#ff6103;padding:0 1em;font-weight:bold;font-size:10px;}
+div.saveheader {margin:.5em 2em .5em 0;text-align:right;}
+p.thanks {font-size:.8em;margin:2em 0;}
+</style>
+<body>
+<div id="topline">
+<h1>Interactive Kiosk Revolver</h1>
+<span class="byline">by Curtis Bratton</span>
+<div class="saveheader"><span id="status"></span><button id="savetop">Save</button></div>
+</div>
+<div id="settings">
+<p><label for="autostart">Auto Start:</label> <input type="checkbox" name="autostart" id="autostart"><span class="example">Automatically start Revolver Tabs on browser startup.</span></p>
+<p><label for="forceFullscreen">Force Fullscreen:</label> <input type="checkbox" name="forceFullscreen" id="forceFullscreen"><span class="example">Forces the window to full screen whenever a new tab is loaded.</span></p>
+<p><label for="closeAllOtherTabs">Close Other Tabs:</label> <input type="checkbox" name="closeAllOtherTabs" id="closeAllOtherTabs"><span class="example">Closes all other open tabs whenever a new tab is loaded.</span></p>
+<p><label for="reopenOnClose">Reopen window on close:</label> <input type="checkbox" name="reopenOnClose" id="reopenOnClose"><span class="example">Reopens the browser window if the user closes it.</span></p>
+<p><label for="forceFocus">Hold window focus:</label> <input type="checkbox" name="forceFocus" id="forceFocus"><span class="example">Grab focus back from other browser windows.</span></p>
+<p><label for="urlListData">List of URLs and the amount of time to display them:</label><br /><textarea name="urlListData" id="urlListData" rows="10" cols="80"></textarea><span class="example">Each URL should be formatted [rotateTime],[rotateTimeWithInteract],[URL]. Example 15,30,https://google.com</span></p>
+<p><label for="urlWhiteList">List of regular expressions to apply as a whitelist against any URL the user attempts to load:</label><br /><textarea name="urlWhiteList" id="urlWhiteList" rows="10" cols="80"></textarea><br /><label for="redirectUrl">List of regular expressions to apply as a whitelist against any URL the user attempts to load:</label><br /><input name="redirectUrl" id="redirectUrl" size="80"></input><span class="example">Each entry should be a regex. A match will allow the page content to load, otherwise the user will be redirected.</span></p>
+<p><label for="inactive">Rotate only when inactive:</label> <input type="checkbox" name="inactive" id="inactive"><span class="example"><strong>Rotation will pause</strong> if the browser has been interacted with within the time specified in the URLs list.</span></p>
+<button id="save">Save</button><span id="status2"></span>
+</div>
+<p class="thanks">Base on <a href="https://code.google.com/p/revolver-chrome-extensions/">Revolver - Tabs</a> by <a href="http://www.buildcontext.com/">Ben Hedrington</a> Twitter: <a href="http://twitter.com/benhedrington">@benhedrington</a></p>
+<p class="thanks">Finger Icon from <a href="http://icons8.com/web-app/758/One-Finger">icons8.com</a></p>
+</body>
+<script src="options_script.js"></script>
+</html>

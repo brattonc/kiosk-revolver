@@ -14,6 +14,7 @@ var forceFullscreen = true;
 var closeAllOtherTabs = true;
 var reopenOnClose = true;
 var forceFocus = true;
+var disableRightClick = true;
 var newTabId = -1;
 var currentWindowId = -1;
 var currentUrlIndex = 0;
@@ -56,6 +57,13 @@ if (localStorage["reopenOnClose"]) {
 		reopenOnClose = true;
 	} else {
 		reopenOnClose = false;
+	}
+}
+if (localStorage["disableRightClick"]) { 
+	if (localStorage["disableRightClick"] == 'true') {
+		disableRightClick = true;
+	} else {
+		disableRightClick = false;
 	}
 }
 if (localStorage["forceFocus"]) { 
@@ -237,6 +245,11 @@ function go(windowId) {
         currentTimeout = setTimeout(function() { moveTabIfIdle() }, urlList[currentUrlIndex].switchTime);
         console.log('Starting: timeDelay:'+urlList[currentUrlIndex].switchTime+' inactive:'+tabInactive);
         chrome.tabs.onUpdated.addListener(onTabUpdateWhiteListChecker);
+        chrome.tabs.onUpdated.addListener(function(tab) {
+            if(disableRightClick){
+                chrome.tabs.executeScript({ file: 'disable_right_click.js' });
+            }
+        });
         chrome.windows.onRemoved.addListener(onWindowClose);
         chrome.windows.onFocusChanged.addListener(onFocusChange);
         badgeTabs(windowId, 'on');

@@ -36,6 +36,13 @@ function save_options() {
         localStorage["reopenOnClose"] = 'false';
         bg.reopenOnClose = false;
     }
+    if (document.getElementById("disableRightClick").checked == true) {
+        localStorage["disableRightClick"] = 'true';
+        bg.disableRightClick = true;
+    } else {
+        localStorage["disableRightClick"] = 'false';
+        bg.disableRightClick = false;
+    }
     if (document.getElementById("forceFocus").checked == true) {
         localStorage["forceFocus"] = 'true';
         bg.forceFocus = true;
@@ -106,6 +113,15 @@ function restore_options() {
         }
     } else {
         document.getElementById("reopenOnClose").checked = false;
+    }
+    if (localStorage["disableRightClick"]) {
+        if (localStorage["disableRightClick"] == 'true') {
+            document.getElementById("disableRightClick").checked = true;
+        } else {
+            document.getElementById("disableRightClick").checked = false;
+        }
+    } else {
+        document.getElementById("disableRightClick").checked = false;
     }
     if (localStorage["forceFocus"]) {
         if (localStorage["forceFocus"] == 'true') {
